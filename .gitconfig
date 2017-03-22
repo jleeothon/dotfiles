@@ -1,0 +1,41 @@
+[user]
+	useConfigOnly = true
+[alias]
+	alias = "!f() { git config --get-regexp "alias.${1}"; }; f"
+	amend = commit --amend
+	author-reset = commit --amend --reset-author
+	autosquash = "!f() { GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $1; }; f"
+	cd = checkout
+	checkmaster = checkout origin/master --
+	commitm = commit -m
+	fall = "!f() { git add . && git commit --fixup HEAD; }; f"
+	fixup = "!f() { if [ -z $1 ]; then git commit --fixup HEAD; else git commit --fixup $1; fi; }; f"
+	force = push -u --force --force-with-lease origin HEAD
+	fup = "!f() { git add . && git commit --fixup HEAD && GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash HEAD~2; git push -f --force-with-lease origin HEAD; }; f"
+	last = log -1 HEAD
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	newbranch = checkout -b
+	ours = "!f() { git co --ours $@ && git add $@; }; f"
+	puff = push -u --force --force-with-lease
+	pushup = push -u origin HEAD
+	reblast = "!f() { git rebase -i HEAD~$1; }; f"
+	rebtil = "!f() { git rebase -i $1~; }; f"
+	resetupstream = reset --hard @{upstream}
+	resquash = "!f() { git rebase -i --autosquash HEAD~$1; }; f"
+	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+ 	mess = "!f() { args=\"$@\"; git commit -m \"$args\"; }; f"
+ 	squash = commit --squash HEAD
+[diff]
+	submodule = log
+[fetch]
+	recurseSubmodules = on-demand
+[status]
+	submoduleSummary = true
+[include]
+	path = ./.private.gitconfig
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

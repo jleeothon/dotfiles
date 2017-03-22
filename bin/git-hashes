@@ -1,0 +1,11 @@
+#/bin/bash
+
+function hashes() {
+  for g in $(find . -name .git)
+  do
+    d=$(basename $(dirname $g))
+    h=$(git --git-dir $g rev-parse HEAD)
+    printf "$d\\t$h\\n"
+  done
+}
+hashes | column -t | sort

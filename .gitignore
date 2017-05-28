@@ -2,6 +2,8 @@
 !.gitconfig
 !.gitignore
 !.hyper.js
+!.private.gitconfig
+!.private.zshrc
 !.rake
 !.zprofile
 !.zshrc

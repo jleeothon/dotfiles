@@ -7,14 +7,7 @@ Johnny's dotfiles.
 - Makes a `git` repo out of your home folder. So far so good.
 - No other installation needed.
 - Files are not tracked unless added to `.gitignore`.
-- Some files are kept private e.g. `.private.gitconfig`. They could be saved separately by making soft links to e.g. `$HOME/Dropbox/.my.private.file`.
-
-### List of private files
-
-This list is just for reference, so I remember what I will have to manually link again.
-
-- `.private.gitconfig`
-- `.private.zsh`
+- Some files are kept "private" e.g. `.private.gitconfig`. They are synced with Dropbox instead.
 
 ## Installing
 

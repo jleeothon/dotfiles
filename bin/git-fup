@@ -1,0 +1,4 @@
+git add .
+git commit --fixup HEAD
+GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash HEAD~2
+git push -f --force-with-lease origin HEAD

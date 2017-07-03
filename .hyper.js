@@ -105,7 +105,7 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    "hyperterm-tabs",
+    // "hyperterm-tabs",
     "hyper-sync-settings",
     "hyperterm-panda",
     "hypercwd",

@@ -4,7 +4,7 @@
 	alias = "!f() { git config --get-regexp "alias.${1}"; }; f"
 	amend = commit --amend
 	author-reset = commit --amend --reset-author
-	autosquash = "!f() { GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $1; }; f"
+	autosquash = "!f() { GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash ${1:-"HEAD~2"}; }; f"
 	cd = checkout
 	checkmaster = checkout origin/master --
 	commitm = commit -m

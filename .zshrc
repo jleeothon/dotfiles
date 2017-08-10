@@ -3,6 +3,9 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
+# Use this command to time parts of the script
+# te=$(gdate +%s.%N); ! [ -z $ts ] && (( td = $te - $ts )) && echo "${c:0}: $td"; ts=$(gdate +%s.%N); (( c = c + 1 ))
+
 bindkey -v
 bindkey '^R' history-incremental-pattern-search-backward
 
@@ -19,6 +22,7 @@ PURE_GIT_PULL=0
 autoload -U promptinit; promptinit
 prompt pure
 
+# This one is slow!
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
@@ -33,3 +37,7 @@ alias rakeg="rake -g"
 
 # added by travis gem
 [ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
+
+# This one is very slow!
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -9,7 +9,7 @@
 	checkmaster = checkout origin/master --
 	commitm = commit -m
 	diffup = diff @{upstream}
-	fall = "!f() { git add . && git commit --fixup HEAD; }; f"
+	fall = commit -a --fixup HEAD
 	fixup = "!f() { if [ -z $1 ]; then git commit --fixup HEAD; else git commit --fixup $1; fi; }; f"
 	force = push -u --force --force-with-lease origin HEAD
 	hub = "!github $@"

@@ -17,3 +17,5 @@ rm -rf "$HOME/.git" && \
 mv -f "$DOTTEMP/.git" "$HOME/.git" && \
 git --git-dir="$HOME/.git" reset --hard @{upstream}
 ```
+
+`$HOME/.bin` has to be in the `$PATH`. This is useful for e.g. complicated git aliases that I instead write as git commands e.g. `bin/git-fixup.sh`.

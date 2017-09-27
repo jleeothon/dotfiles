@@ -2,30 +2,31 @@
 	useConfigOnly = true
 [alias]
 	alias = "!f() { git config --get-regexp "alias.${1}"; }; f"
-	amend = commit --amend
+	amend = commit --amend --reuse-message HEAD
+	amendall = commit --amend -a --reuse-message HEAD
+	amendmess = commit --amend
 	author-reset = commit --amend --reset-author
-	autosquash = "!f() { GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash ${1:-"HEAD~2"}; }; f"
 	cd = checkout
 	checkmaster = checkout origin/master --
 	commitm = commit -m
 	diffup = diff @{upstream}
-	fall = commit -a --fixup HEAD
-	fixup = "!f() { if [ -z $1 ]; then git commit --fixup HEAD; else git commit --fixup $1; fi; }; f"
+	fixup = !git-fixup.sh $@
+	fixuplast = "!f() { C=HEAD~$1; [ -z $1 ] && C=HEAD~2; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
+	fixuptil = "!f() { GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash ${1:-"HEAD~2"}; }; f"
 	force = push -u --force --force-with-lease origin HEAD
 	hub = "!github $@"
 	last = log -1 HEAD
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	newbranch = checkout -b
-	ours = "!f() { git co --ours $@ && git add $@; }; f"
+	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
 	puff = push -u --force --force-with-lease
 	pushup = push -u origin HEAD
 	reblast = "!f() { git rebase -i HEAD~$1; }; f"
 	rebroot = rebase -i --root master
 	rebtil = "!f() { git rebase -i $1~; }; f"
 	resetupstream = reset --hard @{upstream}
-	resquash = "!f() { git rebase -i --autosquash HEAD~$1; }; f"
-	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
  	mess = "!f() { args=\"$@\"; git commit -m \"$args\"; }; f"
  	squash = commit --squash HEAD
 [diff]

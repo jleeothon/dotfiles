@@ -10,9 +10,9 @@
 	checkmaster = checkout origin/master --
 	commitm = commit -m
 	diffup = diff @{upstream}
+	fixlast = "!f() { C=HEAD~$1; [ -z $1 ] && C=HEAD~2; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
+	fixtil = "!f() { [ -z $1 ] && C="HEAD~2" || C="$1~"; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
 	fixup = !git-fixup.sh $@
-	fixuplast = "!f() { C=HEAD~$1; [ -z $1 ] && C=HEAD~2; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
-	fixuptil = "!f() { [ -z $1 ] && C="HEAD~2" || C="$1~"; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
 	force = push -u --force --force-with-lease origin HEAD
 	hub = "!github $@"
 	last = log -1 HEAD

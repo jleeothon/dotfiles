@@ -12,7 +12,7 @@
 	diffup = diff @{upstream}
 	fixup = !git-fixup.sh $@
 	fixuplast = "!f() { C=HEAD~$1; [ -z $1 ] && C=HEAD~2; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
-	fixuptil = "!f() { GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash ${1:-"HEAD~2"}; }; f"
+	fixuptil = "!f() { [ -z $1 ] && C="HEAD~2" || C="$1~"; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
 	force = push -u --force --force-with-lease origin HEAD
 	hub = "!github $@"
 	last = log -1 HEAD

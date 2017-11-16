@@ -22,7 +22,7 @@
 	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
 	puff = push -u --force --force-with-lease
 	pushup = push -u origin HEAD
-	reblast = "!f() { git rebase -i HEAD~$1; }; f"
+	reblast = "!f() { git rebase -i HEAD~${1:-2}; }; f"
 	rebroot = rebase -i --root master
 	rebtil = "!f() { git rebase -i $1~; }; f"
 	resetupstream = reset --hard @{upstream}

@@ -31,10 +31,6 @@ export PATH="$HOME/bin:$PATH"
 
 [ -f "$HOME/.private.zshrc" ] && source "$HOME/.private.zshrc"
 
-# aliases
-
-alias rakeg="rake -g"
-
 # added by travis gem
 [ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 

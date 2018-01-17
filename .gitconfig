@@ -1,8 +1,7 @@
 [user]
 	useConfigOnly = true
 [alias]
-	alias = "!f() { git config --get-regexp "alias.${1}"; }; f"
-	amend = commit --amend --reuse-message HEAD
+	amend = "!f() { git commit --amend --reuse-message HEAD; }; f"
 	amendall = commit --amend -a --reuse-message HEAD
 	amendmess = commit --amend
 	author-reset = commit --amend --reset-author
@@ -15,6 +14,7 @@
 	fixup = !git-fixup.sh $@
 	force = push -u --force --force-with-lease origin HEAD
 	hub = "!github $@"
+	l = log --graph --decorate
 	last = log -1 HEAD
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate

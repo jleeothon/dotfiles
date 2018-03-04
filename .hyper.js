@@ -105,11 +105,11 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    "hyperterm-tabs",
-    "hyperterm-panda",
-    "hypercwd",
-    "hyperterm-alternatescroll",
-    "hyper-tab-icons"
+    // "hyperterm-tabs",
+    // "hyperterm-panda",
+    // "hypercwd",
+    // "hyperterm-alternatescroll",
+    // "hyper-tab-icons"
   ],
 
   // in development, you can create a directory under

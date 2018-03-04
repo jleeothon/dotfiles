@@ -3,8 +3,9 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
-# Use this command to time parts of the script
-# te=$(gdate +%s.%N); ! [ -z $ts ] && (( td = $te - $ts )) && echo "${c:0}: $td"; ts=$(gdate +%s.%N); (( c = c + 1 ))
+# function _time {
+#   te=$(gdate +%s.%N); ! [ -z $ts ] && (( td = $te - $ts )) && echo "${c:0}: $td"; ts=$(gdate +%s.%N); (( c = c + 1 ))
+# }
 
 bindkey -v
 bindkey '^R' history-incremental-pattern-search-backward
@@ -23,7 +24,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # This one is slow!
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -43,3 +44,7 @@ eval "$(rbenv init -)"
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/othon/weihrauch/weihrauch/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/othon/weihrauch/weihrauch/node_modules/tabtab/.completions/electron-forge.zsh

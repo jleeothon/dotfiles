@@ -11,14 +11,14 @@
 	diffup = diff @{upstream}
 	fixlast = "!f() { C=HEAD~$1; [ -z $1 ] && C=HEAD~2; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
 	fixtil = "!f() { [ -z $1 ] && C="HEAD~2" || C="$1~"; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
-	fixup = !git-fixup.sh $@
+	fixup = commit -n --fixup
 	force = push -u --force --force-with-lease origin HEAD
 	hub = "!github $@"
 	l = log --graph --decorate
-	last = log -1 HEAD
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-	newbranch = checkout -b
+	msg = "!f() { args=\"$@\"; git commit -m \"$args\"; }; f"
+	obranch = branch --sort=committerdate
 	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
 	puff = push -u --force --force-with-lease
 	pushup = push -u origin HEAD
@@ -26,9 +26,9 @@
 	rebroot = rebase -i --root master
 	rebtil = "!f() { git rebase -i $1~; }; f"
 	resetupstream = reset --hard @{upstream}
+	squash = commit --squash HEAD
 	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
- 	mess = "!f() { args=\"$@\"; git commit -m \"$args\"; }; f"
- 	squash = commit --squash HEAD
+	tip = log -n 1 HEAD
 [diff]
 	submodule = log
 [fetch]

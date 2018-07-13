@@ -63,12 +63,28 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 zshrc_timeit
 
-zshrc_timeit
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
-zshrc_timeit
-
 # zplug
 zshrc_timeit
 export NVM_LAZY_LOAD=true
 zplug "lukechilds/zsh-nvm"
 zshrc_timeit
+
+zshrc_timeit
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose
+then
+	printf "Install? [y/N]: "
+	if read -q
+	then
+		echo; zplug install
+	fi
+fi
+# Then, source plugins and add commands to $PATH
+zplug load
+zshrc_timeit
+
+zshrc_timeit
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
+zshrc_timeit
+
+export PATH="$HOME/packer:$PATH"

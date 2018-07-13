@@ -12,6 +12,7 @@
 	fixlast = "!f() { C=HEAD~$1; [ -z $1 ] && C=HEAD~2; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
 	fixtil = "!f() { [ -z $1 ] && C="HEAD~2" || C="$1~"; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
 	fixup = commit -n --fixup
+	fixuptil = "!f() { git fixup \"$1\" && git fixtil \"$1\"; }; f"
 	force = push -u --force --force-with-lease origin HEAD
 	hub = "!github $@"
 	l = log --graph --decorate
@@ -21,6 +22,7 @@
 	obranch = branch --sort=committerdate
 	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
 	puff = push -u --force --force-with-lease
+	purr = pull -r
 	pushup = push -u origin HEAD
 	reblast = "!f() { git rebase -i HEAD~${1:-2}; }; f"
 	rebroot = rebase -i --root master

@@ -4,7 +4,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # Change zshrc_timeit_debug to print durations or not
-function zshrc_timeit_debug { return 1 }
+function zshrc_timeit_debug { return 0 }
 function zshrc_now { gdate '+%s.%N' }
 ZSHRC_LAST_TIME=$(zshrc_now)
 function _zshrc_timeit {
@@ -88,3 +88,14 @@ zshrc_timeit
 zshrc_timeit
 
 export PATH="$HOME/packer:$PATH"
+
+alias cl=clear
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Heaven knows why mein Komputer otherwise in German otherwise
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+alias vim=nvim

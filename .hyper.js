@@ -8,7 +8,7 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: ['Menlo'],
+    // fontFamily: ['Menlo'],
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     cursorShape: 'BLOCK',
@@ -73,7 +73,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyper-search", "hypercwd", "hyper-snazzy", "hyper-tabs-enhanced"],
+  plugins: ["hyper-search", "hypercwd", "hyper-tabs-enhanced", "hyper-snazzy"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

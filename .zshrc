@@ -3,6 +3,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
+ZSHRC_INIT_TIME=$(gdate '+%s.%N')
 # Change zshrc_timeit_debug to print durations or not
 function zshrc_timeit_debug { return 0 }
 function zshrc_now { gdate '+%s.%N' }
@@ -55,12 +56,13 @@ export PATH="$HOME/bin:$PATH"
 zshrc_timeit
 
 zshrc_timeit
-eval "$(rbenv init -)"
+alias init-rbenv='eval "$(rbenv init -)"'
 zshrc_timeit
 
 zshrc_timeit
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+alias init-pyenv='eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)'
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 zshrc_timeit
 
 # zplug
@@ -71,20 +73,16 @@ zshrc_timeit
 
 zshrc_timeit
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose
-then
-	printf "Install? [y/N]: "
-	if read -q
-	then
-		echo; zplug install
-	fi
-fi
+# if ! zplug check --verbose
+# then
+# 	printf "Install? [y/N]: "
+# 	if read -q
+# 	then
+# 		echo; zplug install
+# 	fi
+# fi
 # Then, source plugins and add commands to $PATH
 zplug load
-zshrc_timeit
-
-zshrc_timeit
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
 zshrc_timeit
 
 export PATH="$HOME/packer:$PATH"
@@ -94,8 +92,11 @@ alias cl=clear
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Heaven knows why mein Komputer otherwise in German otherwise
-export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 alias vim=nvim
+
+ZSHRC_FINISH_TIME=$(gdate '+%s.%N')
+(( ZSHRC_TOTAL_TIME = $ZSHRC_FINISH_TIME - $ZSHRC_INIT_TIME ))
+echo "Total: $ZSHRC_TOTAL_TIME"

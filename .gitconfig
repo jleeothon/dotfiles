@@ -1,6 +1,7 @@
 [user]
 	useConfigOnly = true
 [alias]
+	prunemerged = "! git branch --format '%(refname:short)' --merged origin/master | grep -v -e '^master$' | xargs -L 100 git branch -d"
 	amend = "!f() { git commit --amend --reuse-message HEAD; }; f"
 	amendall = commit --amend -a --reuse-message HEAD
 	amendmess = commit --amend
@@ -21,8 +22,8 @@
 	msg = "!f() { args=\"$@\"; git commit -m \"$args\"; }; f"
 	obranch = branch --sort=committerdate
 	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
-	puff = push -u --force --force-with-lease
-	purr = pull -r
+	puff = "!f() { echo 💨; git push -u --force --force-with-lease; }; f"
+	purr = "!f() { echo 🐱; PUSH_BRANCH=$(git rev-parse --verify --abbrev-ref @{push}); git pull --rebase origin \"${PUSH_BRANCH#*/}\"; }; f"
 	pushup = push -u origin HEAD
 	reblast = "!f() { git rebase -i HEAD~${1:-2}; }; f"
 	rebroot = rebase -i --root master

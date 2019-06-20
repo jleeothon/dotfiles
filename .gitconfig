@@ -25,6 +25,7 @@
 	puff = "!f() { echo 💨; git push -u --force --force-with-lease; }; f"
 	purr = "!f() { echo 🐱; PUSH_BRANCH=$(git rev-parse --verify --abbrev-ref @{push}); git pull --rebase origin \"${PUSH_BRANCH#*/}\"; }; f"
 	pushup = push -u origin HEAD
+	rebi = "rebase -i"
 	reblast = "!f() { git rebase -i HEAD~${1:-2}; }; f"
 	rebroot = rebase -i --root master
 	rebtil = "!f() { git rebase -i $1~; }; f"

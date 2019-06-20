@@ -97,6 +97,10 @@ export LANG=en_US.UTF-8
 
 alias vim=nvim
 
+# Needs to run first:
+# docker build -t docker-show-context https://github.com/pwaller/docker-show-context.git
+alias docker-show-context='docker run -v $PWD:/data docker-show-context'
+
 ZSHRC_FINISH_TIME=$(gdate '+%s.%N')
 (( ZSHRC_TOTAL_TIME = $ZSHRC_FINISH_TIME - $ZSHRC_INIT_TIME ))
 echo "Total: $ZSHRC_TOTAL_TIME"

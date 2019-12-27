@@ -1,22 +1,28 @@
+export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
-ZSHRC_INIT_TIME=$(gdate '+%s.%N')
+# All times in milliseconds
 # Change zshrc_timeit_debug to print durations or not
 function zshrc_timeit_debug { return 0 }
-function zshrc_now { gdate '+%s.%N' }
-ZSHRC_LAST_TIME=$(zshrc_now)
+function zshrc_now { printf '%0.f' "$(echo "$(gdate '+%s.%N') * 1000" | bc)" }
 function _zshrc_timeit {
-	LINE_NUMBER=$1
-	LAST_TIME=$2
-	NEW_NOW=$(zshrc_now)
-	(( DIFF = $NEW_NOW - $LAST_TIME ))
-	echo "$LINE_NUMBER: $DIFF" >&2
-	echo $NEW_NOW
+	local line_no=$1
+	local last_time=$2
+	local new_now=$(zshrc_now)
+	local diff=$(expr "$new_now" - "$last_time")
+	printf "∆t(%i) = %4.i ms\n" "$line_no" "$diff" >&2
+	# echo "$line_no: $diff ms" >&2
+	echo "$new_now"
 }
 alias zshrc_timeit='zshrc_timeit_debug && ZSHRC_LAST_TIME=$(_zshrc_timeit $LINENO $ZSHRC_LAST_TIME)'
+
+ZSHRC_INIT_TIME=$(zshrc_now)
+ZSHRC_LAST_TIME="$ZSHRC_INIT_TIME"
 
 zshrc_timeit
 source "$HOME/.zplug/init.zsh"
@@ -31,8 +37,6 @@ bindkey '^R' history-incremental-pattern-search-backward
 
 zshrc_timeit
 
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
 zstyle :compinstall filename '/Users/othon/.zshrc'
 
 zshrc_timeit
@@ -50,10 +54,6 @@ autoload -U promptinit; promptinit
 prompt pure
 zshrc_timeit
 
-zshrc_timeit
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/bin:$PATH"
-zshrc_timeit
 
 zshrc_timeit
 alias init-rbenv='eval "$(rbenv init -)"'
@@ -101,6 +101,13 @@ alias vim=nvim
 # docker build -t docker-show-context https://github.com/pwaller/docker-show-context.git
 alias docker-show-context='docker run -v $PWD:/data docker-show-context'
 
-ZSHRC_FINISH_TIME=$(gdate '+%s.%N')
+alias g=git
+
+ZSHRC_FINISH_TIME=$(zshrc_now)
 (( ZSHRC_TOTAL_TIME = $ZSHRC_FINISH_TIME - $ZSHRC_INIT_TIME ))
-echo "Total: $ZSHRC_TOTAL_TIME"
+printf '   ∑∆t = %4i ms' "$ZSHRC_TOTAL_TIME"
+
+unfunction zshrc_timeit_debug
+unfunction zshrc_now
+unfunction _zshrc_timeit
+unalias zshrc_timeit

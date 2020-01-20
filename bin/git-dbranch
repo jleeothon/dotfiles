@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 branches = ARGV.join(' ')
-%x(git branch -D #{ARGV.join(' ')})
+system('git', 'branch', '-D', *ARGV)
 branches = ARGV.map{|a| ":#{a}"}
-%x(git push origin #{branches.join(' ')})
+system('git', 'push', 'origin', *branches)

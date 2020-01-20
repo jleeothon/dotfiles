@@ -1,19 +1,16 @@
 [user]
 	useConfigOnly = true
 [alias]
-	prunemerged = "! git branch --format '%(refname:short)' --merged origin/master | grep -v -e '^master$' | xargs -L 100 git branch -d"
 	amend = "!f() { git commit --amend --reuse-message HEAD; }; f"
 	amendall = commit --amend -a --reuse-message HEAD
 	amendmess = commit --amend
 	author-reset = commit --amend --reset-author
+	autofixmaster = rebase -i --autosquash master
 	cd = checkout
 	checkmaster = checkout origin/master --
 	commitm = commit -m
-	diffup = diff @{upstream}
-	fixlast = "!f() { C=HEAD~$1; [ -z $1 ] && C=HEAD~2; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
-	fixtil = "!f() { [ -z $1 ] && C="HEAD~2" || C="$1~"; GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash $C; }; f"
+	diffupstream = diff @{upstream}
 	fixup = commit -n --fixup
-	fixuptil = "!f() { git fixup \"$1\" && git fixtil \"$1\"; }; f"
 	force = push -u --force --force-with-lease origin HEAD
 	hub = "!github $@"
 	l = log --graph --decorate
@@ -22,10 +19,11 @@
 	msg = "!f() { args=\"$@\"; git commit -m \"$args\"; }; f"
 	obranch = branch --sort=committerdate
 	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
+	prunemerged = "! git branch --format '%(refname:short)' --merged origin/master | grep -v -e '^master$' | xargs -L 100 git branch -d"
 	puff = "!f() { echo 💨; git push -u --force --force-with-lease; }; f"
 	purr = "!f() { echo 🐱; PUSH_BRANCH=$(git rev-parse --verify --abbrev-ref @{push}); git pull --rebase origin \"${PUSH_BRANCH#*/}\"; }; f"
 	pushup = push -u origin HEAD
-	rebi = "rebase -i"
+	rebi = rebase -i
 	reblast = "!f() { git rebase -i HEAD~${1:-2}; }; f"
 	rebroot = rebase -i --root master
 	rebtil = "!f() { git rebase -i $1~; }; f"

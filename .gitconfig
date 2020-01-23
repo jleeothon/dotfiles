@@ -1,13 +1,14 @@
 [user]
 	useConfigOnly = true
 [alias]
-	amend = "!f() { git commit --amend --reuse-message HEAD; }; f"
+	amend = commit --amend --reuse-message HEAD
 	amendall = commit --amend -a --reuse-message HEAD
 	amendmess = commit --amend
+	amendn = commit -n --amend --reuse-message HEAD
 	author-reset = commit --amend --reset-author
 	autofixmaster = rebase -i --autosquash master
 	cd = checkout
-	checkmaster = checkout origin/master --
+	chmas = checkout master
 	commitm = commit -m
 	diffupstream = diff @{upstream}
 	fixup = commit -n --fixup

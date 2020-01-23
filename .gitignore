@@ -1,5 +1,7 @@
 /*
 !.bash_profile
+!.config/fish/config.fish
+!.config/fish/fishfile
 !.gitconfig
 !.gitignore
 !.hyper.js

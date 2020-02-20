@@ -8,6 +8,7 @@
 	author-reset = commit --amend --reset-author
 	autofixmaster = rebase -i --autosquash master
 	cd = checkout
+	ch = checkout
 	chmas = checkout master
 	commitm = commit -m
 	diffupstream = diff @{upstream}
@@ -24,6 +25,7 @@
 	puff = "!f() { echo 💨; git push -u --force --force-with-lease; }; f"
 	purr = "!f() { echo 🐱; PUSH_BRANCH=$(git rev-parse --verify --abbrev-ref @{push}); git pull --rebase origin \"${PUSH_BRANCH#*/}\"; }; f"
 	pushup = push -u origin HEAD
+	reb = rebase
 	rebi = rebase -i
 	reblast = "!f() { git rebase -i HEAD~${1:-2}; }; f"
 	rebroot = rebase -i --root master

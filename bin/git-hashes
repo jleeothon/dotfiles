@@ -1,4 +1,4 @@
-#/bin/bash
+#!/usr/bin/env bash
 
 function hashes() {
   for g in $(find . -name .git)

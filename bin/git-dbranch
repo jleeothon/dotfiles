@@ -1,5 +1,6 @@
-#!/usr/bin/env ruby
-branches = ARGV.join(' ')
-system('git', 'branch', '-D', *ARGV)
-branches = ARGV.map{|a| ":#{a}"}
-system('git', 'push', 'origin', *branches)
+#!/usr/bin/env fish
+
+for branch in $argv
+  git branch -D $branch
+  git push origin :$branch
+end

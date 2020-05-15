@@ -1,7 +1,0 @@
-#!/usr/bin/env fish
-
-# Runs `node ...args | bunyan`
-
-for arg in $argv
-  echo $arg
-end | xargs node | bunyan

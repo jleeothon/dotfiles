@@ -1,0 +1,15 @@
+#!/usr/bin/env fish
+
+set todaydate (date +%Y-%m-%d)
+set extension (
+	if set -q $argv[1]
+		echo 'adoc'
+	else
+		echo $argv[1]
+	end
+)
+set filename "$todaydate.$extension"
+if test -f $filename
+	touch $filename
+end
+echo $filename

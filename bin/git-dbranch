@@ -1,6 +1,4 @@
 #!/usr/bin/env fish
 
-for branch in $argv
-  git branch -D $branch
-  git push origin :$branch
-end
+git branch -D $argv
+git push --delete $argv

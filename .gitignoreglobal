@@ -1,0 +1,6 @@
+*.swp
+.DS_Store
+Icon
+# Ignoring .envrc and .tools-versions because I might use them although not everyone at work / other projects will
+.envrc
+.tool-versions

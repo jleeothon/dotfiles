@@ -27,6 +27,7 @@
 	pushup = push -u origin HEAD
 	reb = rebase
 	rebi = rebase -i
+	rebo = rebase -i origin/master
 	reblast = "!f() { git rebase -i HEAD~${1:-2}; }; f"
 	rebroot = rebase -i --root master
 	rebtil = "!f() { git rebase -i $1~; }; f"
@@ -49,3 +50,4 @@
 	smudge = git-lfs smudge -- %f
 [core]
 	excludesfile = ~/.gitignoreglobal
+	quotepath = off

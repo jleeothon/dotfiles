@@ -8,9 +8,12 @@
 	author-reset = commit --amend --reset-author
 	autofixmaster = rebase -i --autosquash master
 	cd = checkout
+	cdroot = "!set -eux && cd \"$(git root)\""
 	ch = checkout
 	chmas = checkout master
 	commitm = commit -m
+	diff-master = "!set -eux && git diff \"$(git merge-base HEAD master)\""
+	diff-master-names = "!set -eux && git diff --name-only \"$(git merge-base HEAD master)\""
 	diffupstream = diff @{upstream}
 	fixup = commit -n --fixup
 	force = push -u --force --force-with-lease origin HEAD
@@ -23,12 +26,12 @@
 	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
 	prunemerged = "! git branch --format '%(refname:short)' --merged origin/master | grep -v -e '^master$' | xargs -L 100 git branch -d"
 	puff = "!f() { echo 💨; git push -u --force --force-with-lease; }; f"
-	purr = "!f() { echo 🐱; PUSH_BRANCH=$(git rev-parse --verify --abbrev-ref @{push}); git pull --rebase origin \"${PUSH_BRANCH#*/}\"; }; f"
+	purr = "!set -eux && echo 🐱 && PUSH_BRANCH=$(git rev-parse --verify --abbrev-ref @{push}) && git pull --rebase origin \"${PUSH_BRANCH#*/}\""
 	pushup = push -u origin HEAD
 	reb = rebase
 	rebi = rebase -i
-	rebo = rebase -i origin/master
 	reblast = "!f() { git rebase -i HEAD~${1:-2}; }; f"
+	rebo = rebase -i origin/master
 	rebroot = rebase -i --root master
 	rebtil = "!f() { git rebase -i $1~; }; f"
 	resetupstream = reset --hard @{upstream}
@@ -51,3 +54,5 @@
 [core]
 	excludesfile = ~/.gitignoreglobal
 	quotepath = off
+[pull]
+	rebase = true

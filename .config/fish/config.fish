@@ -1,8 +1,15 @@
-source /usr/local/opt/asdf/asdf.fish
-
 set PATH "$HOME/bin" $PATH
 
-alias vim=nvim
-alias packs="cd packages"
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
 
-eval (direnv hook fish)
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+direnv hook fish | source
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+# Find files with Ctrl+F
+# Find modified paths with Ctrl+G+S (git status)
+# Find commit hashes with Ctrl+G+L (git log)
+fzf_configure_bindings --directory=\cf --git_log=\cgl --git_status=\cgs

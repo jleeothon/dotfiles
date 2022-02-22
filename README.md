@@ -4,18 +4,13 @@ Johnny's dotfiles.
 
 ## How it works
 
-- Makes a `git` repo out of the home folder. CRAZY, RIGHT? So far so good.
+- Makes a `git` repo out of the home folder
 - Files are not tracked unless added to `.gitignore`.
-- Some files are kept "private" e.g. `.private.gitconfig` and synced with Dropbox.
+- Some files are kept "private" e.g. `.private.gitconfig` and synced with a (private) git submodule
 
 ## Installing
 
 ```sh
-DOTTEMP=$(mktemp -d) && \
-git clone git@gitlab.com:jleeothon/dotfiles.git "$DOTTEMP" && \
-rm -rf "$HOME/.git" && \
-mv -f "$DOTTEMP/.git" "$HOME/.git" && \
-git --git-dir="$HOME/.git" reset --hard @{upstream}
+curl https://raw.githubusercontent.com/jleeothon/dotfiles/master/.install.sh | bash
 ```
 
-`$HOME/.bin` has to be in the `$PATH`. This is useful for e.g. complicated git aliases that I instead write as git commands e.g. `bin/git-fixup.sh`.

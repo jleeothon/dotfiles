@@ -1,11 +1,12 @@
 /*
 !.bash_profile
 !.config/fish/config.fish
-!.config/fish/fishfile
+!.config/fish/fish_plugins
 !.gitconfig
 !.gitignore
 !.hyper.js
 !.ideavimrc
+!.install.sh
 !.private.bash_profile
 !.private.gitconfig
 !.private.zshrc
@@ -15,3 +16,4 @@
 !/bin
 !/etc
 !README.md
+!dotfiles-private

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -eux
+CACHED_FILES=$(git diff --cached --name-only --relative)
+LAST_COMMIT_HASH=$(git log -n1 --format=format:%H -- $CACHED_FILES)
+git commit -n --fixup "$LAST_COMMIT_HASH"

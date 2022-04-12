@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+echo $argv
+pushd (dirname $argv[1])
+and set newFolderName (basename $argv[1] .zip)
+and unzip $argv[1] -d $newFolderName
+and set fileList (ls -1 $newFolderName)
+and if test (count $fileList) = 1
+  mv $newFolderName/$fileList/* $newFolderName
+  rm -rf $newFolderName/$fileList
+end

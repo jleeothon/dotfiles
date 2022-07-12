@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+
+# Unstages files and undoes changes (reset + checkout)
+
+for file in $argv
+	git reset -- $file
+	and git checkout -- $file
+end

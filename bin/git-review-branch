@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Creates branch prefixed with reviews/
+
+set -eux
+
+git checkout -b reviews/$1 remotes/origin/$1

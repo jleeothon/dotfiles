@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+LOCAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+REMOTE=$(git config --get "branch.$LOCAL_BRANCH.remote") 
+MERGE=$(git config --get "branch.$LOCAL_BRANCH.merge")
+
+git push --no-verify --delete "$REMOTE" "$MERGE"

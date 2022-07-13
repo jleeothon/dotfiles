@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -eu
+
+# Branches that are merged into master; skip branches that track master
+git for-each-ref --format '%(refname:short) %(upstream)' --merged master refs/heads | while read -r BRANCH UPSTREAM
+do
+	if [ "$UPSTREAM" != 'refs/remotes/origin/master' ]
+	then
+		echo "$BRANCH"
+	fi
+done | xargs -r git branch -D

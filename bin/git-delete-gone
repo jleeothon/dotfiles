@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -eu
+
+git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | while read -r BRANCH TRACK
+do
+	if [ "$TRACK" = '[gone]' ]
+	then
+		echo "$BRANCH"
+	fi
+done | xargs -r git branch -D

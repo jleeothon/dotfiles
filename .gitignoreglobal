@@ -4,3 +4,13 @@ Icon
 # Ignoring .envrc and .tools-versions because I might use them although not everyone at work / other projects will
 .envrc
 .tool-versions
+.node-version
+
+# Personal scripts for work projects that I don't want to commit
+_bin
+
+.editorconfig
+.obsidian
+
+.ignore
+.rgignore

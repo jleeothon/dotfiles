@@ -1,10 +1,24 @@
 #!/usr/bin/env fish
-echo $argv
-pushd (dirname $argv[1])
-and set newFolderName (basename $argv[1] .zip)
-and unzip $argv[1] -d $newFolderName
+set $arg $argv[0]
+
+if not test -f $arg
+	echo "Not a regular file" "$arg" >&2
+	continue
+end
+if test (file --mime-type --brief $arg) != application/zip
+	echo "Not a zip file" "$arg" >&2
+	continue
+end
+
+pushd (dirname $arg)
+and set newFolderName (basename $arg .zip)
+and unzip $arg -d $newFolderName
 and set fileList (ls -1 $newFolderName)
 and if test (count $fileList) = 1
   mv $newFolderName/$fileList/* $newFolderName
   rm -rf $newFolderName/$fileList
 end
+
+# requires brew install trash
+and trash $arg
+popd

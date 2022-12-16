@@ -1,5 +1,7 @@
 [user]
 	useConfigOnly = true
+	name = Johnny Lee-Othon
+	email = jleeothon@icloud.com
 [alias]
 	addbuild = add '**/build'
 	addgen = add '**/*.gen.ts' '**/*.gen.d.ts' '*.d.ts'
@@ -13,6 +15,7 @@
 	ch = checkout
 	chmas = checkout master
 	commitm = commit -m
+	branchd = branch -D
 	diff-master = "!set -eux && git diff \"$(git merge-base HEAD master)\""
 	diff-master-names = "!set -eux && git diff --name-only \"$(git merge-base HEAD master)\""
 	diffupstream = diff @{upstream}
@@ -25,8 +28,7 @@
 	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
 	prunemerged = "! git branch --format '%(refname:short)' --merged origin/master | grep -v -e '^master$' | xargs -L 100 git branch -d"
 	puff = push -u --force-with-lease
-	puffefe = push -u --force-with-lease --no-verify
-	purr = "!set -eux && echo 🐱 && PUSH_BRANCH=$(git rev-parse --verify --abbrev-ref @{push}) && git pull --rebase origin \"${PUSH_BRANCH#*/}\""
+	pufefe = push -u --force-with-lease --no-verify
 	pushup = push -u origin HEAD
 	reb = rebase
 	rebi = rebase -i

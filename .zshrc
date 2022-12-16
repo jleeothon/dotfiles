@@ -25,7 +25,7 @@ ZSHRC_INIT_TIME=$(zshrc_now)
 ZSHRC_LAST_TIME="$ZSHRC_INIT_TIME"
 
 zshrc_timeit
-source "$HOME/.zplug/init.zsh"
+# source "$HOME/.zplug/init.zsh"
 zshrc_timeit
 
 zshrc_timeit
@@ -51,7 +51,7 @@ zshrc_timeit
 zshrc_timeit
 PURE_GIT_PULL=0
 autoload -U promptinit; promptinit
-prompt pure
+# prompt pure
 zshrc_timeit
 
 
@@ -66,10 +66,10 @@ alias init-pyenv='eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)'
 zshrc_timeit
 
 # zplug
-zshrc_timeit
-export NVM_LAZY_LOAD=true
-zplug "lukechilds/zsh-nvm"
-zshrc_timeit
+# zshrc_timeit
+# export NVM_LAZY_LOAD=true
+# zplug "lukechilds/zsh-nvm"
+# zshrc_timeit
 
 zshrc_timeit
 # Install plugins if there are plugins that have not been installed
@@ -82,7 +82,7 @@ zshrc_timeit
 # 	fi
 # fi
 # Then, source plugins and add commands to $PATH
-zplug load
+# zplug load
 zshrc_timeit
 
 export PATH="$HOME/packer:$PATH"

@@ -111,3 +111,10 @@ unfunction zshrc_timeit_debug
 unfunction zshrc_now
 unfunction _zshrc_timeit
 unalias zshrc_timeit
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform

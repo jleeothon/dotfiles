@@ -4,4 +4,5 @@
 
 set -eux
 
-git checkout -b reviews/$1 remotes/origin/$1
+git fetch --force --set-upstream origin "$1":"reviews/$1" 
+git switch "reviews/$1"

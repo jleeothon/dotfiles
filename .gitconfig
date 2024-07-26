@@ -15,12 +15,12 @@
 	branchd = branch -D
 	cd = checkout
 	ch = checkout
-	chmas = checkout master
+	chdefault = "!git checkout ${DEFAULT_BRANCH:-default-branch-not-set}"
 	commitm = commit -m
 	diff-master = "!set -eux && git diff \"$(git merge-base HEAD master)\""
 	diff-master-names = "!set -eux && git diff --name-only \"$(git merge-base HEAD master)\""
 	diffupstream = diff @{upstream}
-	fetcho = fetch origin master:master
+	fetchdefault = "!git fetch origin ${DEFAULT_BRANCH:-default-branch-not-set}:$DEFAULT_BRANCH"
 	fixup = commit -n --fixup
 	l = log --graph --decorate
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat

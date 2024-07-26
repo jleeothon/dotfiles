@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+mkdir -p "$HOME/.pushkubectx"
+
+set -euxo pipefail
+
+STACK="$HOME/.pushkubectx/stack"
+LAST_CONTEXT=$(tail -n 1 "$STACK")
+
+# New content
+T=$(mktemp)
+ghead -n -1 "$STACK" > "$T"
+
+# Execute
+kubectx "$LAST_CONTEXT"
+mv "$T" "$STACK"

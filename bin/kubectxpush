@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+mkdir -p "$HOME/.pushkubectx"
+
+set -euxo pipefail
+
+OLD_CONTEXT=$(kubectl config current-context)
+NEW_CONTEXT="$1"
+STACK="$HOME/.pushkubectx/stack"
+
+kubectx "$NEW_CONTEXT"
+echo "$OLD_CONTEXT" >> "$STACK"
